@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Navigate from './navigate';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello to new project "My Notes"</Text>
-      <StatusBar style="auto" />
+    <View style={styles.home}>
+      <Navigate />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  home: {
+    flex: 1
+  }
 });
