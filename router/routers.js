@@ -1,66 +1,85 @@
 import * as React from 'react';
+
 import Main from '../components/pages/Main/Main';
-// import Contacts from '../components/pages/Contacts/Contacts';
+import Contacts from '../components/pages/Info/Info';
 import Favourites from '../components/pages/Favourites/Favourites';
 import Settings from '../components/pages/Settings/Settings';
+import Add from '../components/pages/Add/Add';
 
 import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { AntDesign } from '@expo/vector-icons';
 
-// const Stack = createStackNavigator();
-// const Tab = createBottomTabNavigator();
-// const Tab = createMaterialTopTabNavigator();
-const Tab = createMaterialBottomTabNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default function Navigate() {
-
-    // return (
-    //   <NavigationContainer>
-    //     <Stack.Navigator>
-    //         <Stack.Screen
-    //             name="Main"
-    //             component={Main}
-    //             options={{ title: 'Главная' }}
-    //         />
-    //         <Stack.Screen
-    //             name="Contacts"
-    //             component={Contacts}
-    //             options={{ title: 'Контакты' }}
-    //         />
-    //         <Stack.Screen
-    //             name="Favourites"
-    //             component={Favourites}
-    //             options={{ title: 'Избранное' }}
-    //         />
-    //         <Stack.Screen
-    //             name="Settings"
-    //             component={Settings}
-    //             options={{ title: 'Настройки' }}
-    //         />
-    //     </Stack.Navigator>
-    //   </NavigationContainer>
-    // );
-
     return (
         <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen
-                    name="Main"
-                    component={Main}
-                    // options={{ header: false }}
-                />
-                <Tab.Screen
-                    name="Favourites"
-                    component={Favourites}
-                />
-                <Tab.Screen
-                    name="Settings"
-                    component={Settings}
-                />
-            </Tab.Navigator>
+          <Tab.Navigator
+            initialRouteName="Main"
+            screenOptions={{
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: 'tomato',
+                tabBarInactiveTintColor: 'gray'
+            }}
+          >
+              <Tab.Screen
+                  name="Main"
+                  component={Main}
+                  options={{
+                    title: 'Главная',
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => {
+                        return <AntDesign name="home" size={36} color={color}/>
+                    }
+                }}
+              />
+              <Tab.Screen
+                  name="Favourites"
+                  component={Favourites}
+                  options={{
+                    title: 'Избранное',
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="staro" size={36} color={color}/>
+                    )
+                }}
+              />
+              <Tab.Screen
+                  name="Add"
+                  component={Add}
+                  options={{
+                    title: 'Добавление',
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="pluscircleo" size={36} color={color} />
+                    )
+                }}
+              />
+              <Tab.Screen
+                  name="Settings"
+                  component={Settings}
+                  options={{
+                    title: 'Настройки',
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="setting" size={36} color={color}/>
+                    )
+                }}
+              />
+              <Tab.Screen
+                  name="Info"
+                  component={Contacts}
+                  options={{
+                    title: 'Инфо',
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="infocirlceo" size={36} color={color}/>
+                    )
+                }}
+              />
+          </Tab.Navigator>
         </NavigationContainer>
     );
   }

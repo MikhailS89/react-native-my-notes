@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-export default function Settings({ navigation }) {
+export default function Add({ navigation }) {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Settings Page</Text>
+        <Text>Add Page</Text>
       </View>
     </View>
   );
