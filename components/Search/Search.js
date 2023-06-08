@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import { EvilIcons } from '@expo/vector-icons';
 
 
 export default function Search() {
   return (
     <View>
       <Text>Search component</Text>
-      <StatusBar style="auto" />
+      <EvilIcons name="search" size={24} color="black" />
     </View>
   );
 }
