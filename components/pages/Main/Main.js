@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { globalStyle } from '../../../styles/style';
+import Search from '../../Search/Search';
 
 export default function Main({ navigation }) {
   return (
     <View style={[styles.container, globalStyle.main]}>
+      <Search />
       <View>
         <Text>Hello to new project "My Notes"</Text>
       </View>
@@ -14,7 +16,7 @@ export default function Main({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     flex: 1
   }
 });
