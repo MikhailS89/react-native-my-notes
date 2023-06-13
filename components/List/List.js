@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'white',
     borderRadius: 25,
-    padding: '5%'
+    padding: '5%',
+    marginVertical: 10
   },
   title: {
     fontSize: 24,
