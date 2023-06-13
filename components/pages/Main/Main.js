@@ -1,15 +1,26 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { globalStyle } from '../../../styles/style';
 import Search from '../../Search/Search';
 import List from '../../List/List';
+import { useSelector } from 'react-redux'
 
 export default function Main({ navigation }) {
+
+  const listItems = useSelector(state => state.itemList);
+
   return (
     <View style={[styles.container, globalStyle.main]}>
       <Search />
       <View style={styles.container}>
-        <List />
+        <FlatList data={listItems} renderItem={({ item }) => (
+          <List
+            title={ item.title }
+            text={ item.text }
+            watch={ item.watch }
+            background={ item.background }
+          />
+        )}/>
       </View>
     </View>
   );
@@ -17,7 +28,7 @@ export default function Main({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    // justifyContent: 'space-between',
-    flex: 1
+    flex: 1,
+    marginBottom: '10%'
   }
 });
