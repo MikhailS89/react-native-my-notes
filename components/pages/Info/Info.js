@@ -6,7 +6,7 @@ export default function Info({ navigation }) {
   return (
     <View style={[styles.container, globalStyle.main]}>
       <View>
-        <Text>Info Page"</Text>
+        <Text>Info Page</Text>
       </View>
     </View>
   );

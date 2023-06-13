@@ -35,7 +35,7 @@ export default function Navigate() {
   }
 
   return (
-      <NavigationContainer>
+      <NavigationContainer style={styles.home}>
         <Tab.Navigator
           initialRouteName="Main"
           screenOptions={{
@@ -71,6 +71,7 @@ export default function Navigate() {
                   headerShown: false,
                   tabBarButton: (props) => {
 
+                    // TO DO fucn button add/dell
                     // console.log('tabBarButton: props: ', props)
 
                     return (
@@ -124,5 +125,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       paddingHorizontal: '5%'
     }
+  },
+  home: {
+    flex: 1
   }
 });
