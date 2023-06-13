@@ -11,7 +11,7 @@ const Watch = () => {
 }
 
 
-export default function List({ title, text, watch, background }) {
+export default function List({ title = '', text = '', watch = false, background = 'white' }) {
 
   if (watch) {
     return (
