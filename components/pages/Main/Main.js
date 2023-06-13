@@ -9,7 +9,12 @@ export default function Main({ navigation }) {
     <View style={[styles.container, globalStyle.main]}>
       <Search />
       <View style={styles.container}>
-        <List />
+        <List
+          title='Designing for emotions'
+          text='wireframes , ui ux design and emotion design Designing for users'
+          watch={true}
+          background='#fdffb2'
+        />
       </View>
     </View>
   );
@@ -17,7 +22,6 @@ export default function Main({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    // justifyContent: 'space-between',
     flex: 1
   }
 });

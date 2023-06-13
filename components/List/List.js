@@ -2,17 +2,33 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
-
-export default function List() {
+const Watch = () => {
   return (
-    <View style={styles.list}>
-      <Text style={styles.title}>Designing for emotions</Text>
-      <Text style={styles.text}>wireframes , ui ux design and emotion design Designing for users</Text>
-      <View style={styles.watch}>
-        <Entypo name="stopwatch" size={24} color="#312161" />
-      </View>
+    <View style={styles.watch}>
+      <Entypo name="stopwatch" size={24} color="#312161" />
     </View>
-  );
+  )
+}
+
+
+export default function List({ title, text, watch, background }) {
+
+  if (watch) {
+    return (
+      <View style={[styles.list, { backgroundColor: background }]}>
+        <Text style={styles.title}>{ title }</Text>
+        <Text style={styles.text}>{ text }</Text>
+        <Watch />
+      </View>
+    );
+  } else {
+    return (
+      <View style={[styles.list, { backgroundColor: background }]}>
+        <Text style={styles.title}>{ title }</Text>
+        <Text style={styles.text}>{ text }</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -20,7 +36,6 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'white',
     borderRadius: 25,
-    backgroundColor: '#ffc5f7',
     padding: '5%'
   },
   title: {
@@ -30,7 +45,8 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 10,
     fontSize: 16,
-    color: '#be77b4',
+    color: '#312161',
+    opacity: 0.5,
     maxHeight: 100
   },
   watch: {
@@ -39,7 +55,9 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'white',
     borderRadius: 25,
-    backgroundColor: '#ffc5f7',
-    width: 40
+    width: 40,
+    height: 40,
+    textAlign: 'center',
+    lineHeight: 40
   }
 });
