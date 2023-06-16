@@ -86,7 +86,6 @@ export default function Navigate() {
                 name="Add"
                 // children={()=><Add propName={'TO DO TO DO !!!'}/>}
                 component={Add}
-                onPress={() => console.log('TabBarButtonCenter')}
                 options={{
                   title: 'Add',
                   headerShown: false,
