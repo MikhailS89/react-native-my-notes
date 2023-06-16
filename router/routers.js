@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Main from '../components/pages/Main/Main';
 import Info from '../components/pages/Info/Info';
 import Favourites from '../components/pages/Favourites/Favourites';
 import Settings from '../components/pages/Settings/Settings';
-import Add from '../components/pages/Add/Add';
+import TabBarButtonCenter from '../components/TabBarButtonCenter/TabBarButtonCenter';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
@@ -12,23 +12,38 @@ import { AntDesign, Entypo } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
+const SIZE_TAB = 40
 
 export default function Navigate() {
+
+  const setMargin = (name) => {
+    if (name === 'home') {
+      return { marginLeft: 10 }
+    } else if (name === 'staro') {
+      return { marginLeft: 10 }
+    } else if (name === 'setting') {
+      return { marginRight: 10 }
+    } else if (name === 'infocirlceo') {
+      return { marginRight: 10 }
+    } else {
+      return { margin: 0 }
+    }
+  }
 
   const setTabBarIcon = (focused, color, size, name) => {
     if (focused) {
       return (
-        <View style={styles.icons.container}>
-          <AntDesign name={name} size={30} color={color}/>
-          <View style={styles.icons.item}>
-            <Entypo name="dot-single" size={30} color={color}/>
+        <View style={[styles.tabBarContainer, { ...setMargin(name) }]}>
+          <AntDesign name={name} size={SIZE_TAB} color={color}/>
+          <View style={[styles.tabBarItem]}>
+            <Entypo name="dot-single" size={SIZE_TAB} color={color}/>
           </View>
         </View>
       )
     } else {
       return (
-        <View style={styles.icons.container}>
-          <AntDesign name={name} size={30} color={color}/>
+        <View style={[styles.tabBarContainer, { opacity: 0.5, ...setMargin(name) }]}>
+          <AntDesign name={name} size={SIZE_TAB} color={color}/>
         </View>
       )
     }
@@ -40,8 +55,8 @@ export default function Navigate() {
           initialRouteName="Main"
           screenOptions={{
               tabBarShowLabel: false,
-              tabBarActiveTintColor: '#8a63f8',
-              tabBarInactiveTintColor: '#b3a0eb',
+              tabBarActiveTintColor: '#312161',
+              tabBarInactiveTintColor: '#312161',
               tabBarStyle: { position: 'absolute', height: '10%'}
           }}
         >
@@ -64,22 +79,12 @@ export default function Navigate() {
                 }}
             />
             <Tab.Screen
-                name="Add"
-                component={Add}
+                name="TabBarButtonCenter"
+                component={TabBarButtonCenter}
                 options={{
-                  title: 'Добавление',
+                  title: 'TabBarButtonCenter',
                   headerShown: false,
-                  tabBarButton: (props) => {
-
-                    // TO DO fucn button add/dell
-                    // console.log('tabBarButton: props: ', props)
-
-                    return (
-                      <TouchableOpacity style={styles.icons.add} onPress={() => console.log('onPress')}>
-                        <AntDesign name="pluscircleo" size={60} color='#b3a0eb' />
-                      </TouchableOpacity>
-                    )
-                  }
+                  tabBarButton: (props) => <TabBarButtonCenter {...props} />
                 }}
             />
             <Tab.Screen
@@ -106,25 +111,13 @@ export default function Navigate() {
 };
 
 const styles = StyleSheet.create({
-  navigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+  tabBarContainer: {
+    position: 'relative',
   },
-  icons: {
-    container: {
-      position: 'relative'
-    },
-    item: {
-      position: 'absolute',
-      top: '80%',
-      left: 0
-    },
-    add: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: '5%'
-    }
+  tabBarItem: {
+    position: 'absolute',
+    top: '70%',
+    left: 0
   },
   home: {
     flex: 1
