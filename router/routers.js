@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Main from '../components/pages/Main/Main';
 import Info from '../components/pages/Info/Info';
 import Favourites from '../components/pages/Favourites/Favourites';
 import Settings from '../components/pages/Settings/Settings';
 import TabBarButtonCenter from '../components/TabBarButtonCenter/TabBarButtonCenter';
+import Add from '../components/pages/Add/Add';
+import { useSelector } from 'react-redux'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
@@ -19,10 +21,10 @@ export default function Navigate() {
   const setMargin = (name) => {
     if (name === 'home') {
       return { marginLeft: 10 }
-    } else if (name === 'staro') {
-      return { marginLeft: 10 }
-    } else if (name === 'setting') {
-      return { marginRight: 10 }
+    // } else if (name === 'staro') {
+    //   return { marginRight: 0 }
+    // } else if (name === 'setting') {
+    //   return { marginLeft: 0 }
     } else if (name === 'infocirlceo') {
       return { marginRight: 10 }
     } else {
@@ -49,6 +51,8 @@ export default function Navigate() {
     }
   }
 
+  const display = useSelector(state => state.display);
+
   return (
       <NavigationContainer style={styles.home}>
         <Tab.Navigator
@@ -57,7 +61,7 @@ export default function Navigate() {
               tabBarShowLabel: false,
               tabBarActiveTintColor: '#312161',
               tabBarInactiveTintColor: '#312161',
-              tabBarStyle: { position: 'absolute', height: '10%'}
+              tabBarStyle: { position: 'absolute', height: '10%', display: display }
           }}
         >
             <Tab.Screen
@@ -79,12 +83,14 @@ export default function Navigate() {
                 }}
             />
             <Tab.Screen
-                name="TabBarButtonCenter"
-                component={TabBarButtonCenter}
+                name="Add"
+                // children={()=><Add propName={'TO DO TO DO !!!'}/>}
+                component={Add}
+                onPress={() => console.log('TabBarButtonCenter')}
                 options={{
-                  title: 'TabBarButtonCenter',
+                  title: 'Add',
                   headerShown: false,
-                  tabBarButton: (props) => <TabBarButtonCenter {...props} />
+                  tabBarIcon: () => <TabBarButtonCenter/>
                 }}
             />
             <Tab.Screen
